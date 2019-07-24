@@ -20,7 +20,28 @@ var url = process.env.MONGODB_URI;
 
 app.post("/getClusters",function(req,res){
 	console.log("getClusters is called");
-	var doc = { hello: "world" };
+	var doc = { hello: "getClusters" };
+	res.status(200).json(doc);
+});
+
+app.post("/setClusters",function(req,res){
+	console.log("setClusters is called");
+	var doc = { hello: "setClusters" };
+	res.status(200).json(doc);
+});
+app.post("/getEachCluster",function(req,res){
+	console.log("getEachCluster is called");
+	var doc = { hello: "getEachCluster" };
+	res.status(200).json(doc);
+});
+app.post("/getParcelState",function(req,res){
+	console.log("getParcelState is called");
+	var doc = { hello: "getParcelState" };
+	res.status(200).json(doc);
+});
+app.post("/setParcelState",function(req,res){
+	console.log("setParcelState is called");
+	var doc = { hello: "setParcelState" };
 	res.status(200).json(doc);
 });
 
