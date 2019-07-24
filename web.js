@@ -20,6 +20,8 @@ var url = process.env.MONGODB_URI;
 
 app.get("/getClusters",function(req,res){
 	console.log("getClusters is called");
+	var doc = { hello: "world" };
+	res.status(200).json(doc);
 });
 
  var port = process.env.PORT || 5000;
