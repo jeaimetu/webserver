@@ -17,6 +17,10 @@ var url = process.env.MONGODB_URI;
      res.sendfile( __dirname + req.params[0]); 
  });
 
+app.post("/getClusters",function(req,res){
+	console.log("getClusters is called");
+});
+
  var port = process.env.PORT || 5000;
 console.log("port", port);
 
@@ -34,4 +38,4 @@ function test(){
 	});	
 }
 
-test();
+//test();
