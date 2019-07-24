@@ -9,13 +9,14 @@ var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI;
 
 
-/* serves all the static files */
+/* serves all the static files 
  app.get(/^(.+)$/, function(req, res){ 
      console.log('static file request : ' + req.params);
 	 console.log("app get", req.params[0]);
 	 console.log("app get parameter", req.query.name);
      res.sendfile( __dirname + req.params[0]); 
  });
+ */
 
 app.get("/getClusters",function(req,res){
 	console.log("getClusters is called");
