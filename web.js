@@ -23,7 +23,7 @@ app.post("/getClusters",function(req,res){
 	
 	const spawn = require("child_process").spawn; 
         
-	const pyProg = spawn('python', ['./tmscore/main.py', 'getClusters' /* , req.query.firstname, req.query.lastname */ ]);
+	const pyProg = spawn('python', ['./tmscore/main.py' /*, 'getClusters' , req.query.firstname, req.query.lastname */ ]);
         pyProg.stdout.on('data', function(data) {
             console.log(data.toString());
             res.send(data.toString()); 
