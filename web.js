@@ -2,6 +2,12 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
 
+//mongo DB
+var mongo = require('mongodb');
+var ObjectId = require('mongodb').ObjectId;
+var MongoClient = require('mongodb').MongoClient;
+var url = process.env.MONGODB_URI;
+
 
 /* serves all the static files */
  app.get(/^(.+)$/, function(req, res){ 
@@ -17,3 +23,15 @@ console.log("port", port);
  app.listen(port, function() {
    console.log("Listening on " + port);
  });
+
+function test(){
+	MongoClient.connect(url, function(err, db) {
+		var dbo = db.db("heroku_dg3d93pq");
+		var myobj = { boardId : "1",  account : "11111" , date : "22222" };
+		dbo.collection("tmsdb").insertOne(myobj, function(err, insres){
+			if (err) throw err;
+		});
+	});	
+}
+
+test();
