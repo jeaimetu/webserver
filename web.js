@@ -26,7 +26,7 @@ app.post("/getClusters",function(req,res){
 	const pyProg = spawn('python', ['./test.py', req.query.firstname, req.query.lastname ]);
         pyProg.stdout.on('data', function(data) {
             console.log(data.toString());
-            res.send(data.toString()); 
+            //res.send(data.toString()); 
         });
 
 	var doc = { hello: "getClusters" };
