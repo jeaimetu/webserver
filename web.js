@@ -26,11 +26,11 @@ app.post("/getClusters",function(req,res){
 	const pyProg = spawn('python', ['./test.py', req.query.firstname, req.query.lastname ]);
         pyProg.stdout.on('data', function(data) {
             console.log(data.toString());
-            //res.send(data.toString()); 
+            res.send(data.toString()); 
         });
 
-	var doc = { hello: "getClusters" };
-	res.status(200).json(doc);
+	//var doc = { hello: "getClusters" };
+	//res.status(200).json(doc);
 });
 
 app.post("/setClusters",function(req,res){
