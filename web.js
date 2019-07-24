@@ -17,7 +17,7 @@ var url = process.env.MONGODB_URI;
      res.sendfile( __dirname + req.params[0]); 
  });
 
-app.post("/getClusters",function(req,res){
+app.get("/getClusters",function(req,res){
 	console.log("getClusters is called");
 });
 
