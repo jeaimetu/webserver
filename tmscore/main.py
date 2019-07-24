@@ -1,7 +1,7 @@
 import DataController
 import Distributer
 from RouteFinder import RouteFinder
-
+print("b")
 def main():
     print("a")
     #DataController.loadDataFromCache()
