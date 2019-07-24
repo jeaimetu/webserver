@@ -26,7 +26,7 @@ console.log("port", port);
 
 function test(){
 	MongoClient.connect(url, function(err, db) {
-		var dbo = db.db("heroku_dg3d93pq");
+		var dbo = db.db("heroku_9q71xw0m");
 		var myobj = { boardId : "1",  account : "11111" , date : "22222" };
 		dbo.collection("tmsdb").insertOne(myobj, function(err, insres){
 			if (err) throw err;
