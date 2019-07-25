@@ -1,7 +1,15 @@
 import DataBase as db
 from sklearn.cluster import KMeans
+import json
+from pymongo import MongoClient
+
+uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/heroku_9q71xw0m'
 
 def clustering():
+    client = MongoClient(uri)
+    db = client.get_default_database()
+    songs = db['tmssample2']
+    
     kmeans = KMeans(n_clusters=db.num_cluster)
     kmeans.fit_predict(db.df)
     for i in range(db.num_cluster):
@@ -15,6 +23,8 @@ def clustering():
         i +=1
 
     for v in db.dict_Cluster:
-        print("cluster number:" + str(v))
+        cluster_num = str(v)
         for c in db.dict_Cluster[v]:
-            print(str(c.id) + ': ' + str(c.lat) + ', ' + str(c.lon) + ', ' + c.addr)
+            DATA = {'id': c.id, 'lat': c.lat, 'lon': c.lon, 'addr': c.addr}
+            songs.insert_one(DATA)
+            #print(str(c.id) + ': ' + str(c.lat) + ', ' + str(c.lon) + ', ' + c.addr)
