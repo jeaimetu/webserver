@@ -7,8 +7,8 @@ uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55
 
 def clustering():
     client = MongoClient(uri)
-    db = client.get_default_database()
-    songs = db['tmssample2']
+    mongodb = client.get_default_database()
+    songs = mongodb['tmssample2']
     
     kmeans = KMeans(n_clusters=db.num_cluster)
     kmeans.fit_predict(db.df)
