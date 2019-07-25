@@ -54,9 +54,10 @@ def main(args):
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
     cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
-    y = json.dumps(cursor)
-    print(y)
-    #for doc in cursor:
+    
+    for doc in cursor:
+        y = json.dumps(doc)
+        print(y)
         #print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
                #(doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
     
