@@ -1,6 +1,7 @@
 import sys
 import os
 import pymongo
+from pymongo import MongoClient
 SEED_DATA = [
     {
         'decade': '1970s',
