@@ -28,3 +28,4 @@ def clustering():
             DATA = {'id': c.id, 'lat': c.lat, 'lon': c.lon, 'addr': c.addr}
             songs.insert_one(DATA)
             #print(str(c.id) + ': ' + str(c.lat) + ', ' + str(c.lon) + ', ' + c.addr)
+    print("success")
