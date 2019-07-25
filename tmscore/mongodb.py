@@ -22,7 +22,7 @@ SEED_DATA = [
     }
 ]
 
-uri = os.environ.get('MONGODB_URI')
+uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/heroku_9q71xw0m'
 
 def main(args):
 
