@@ -39,8 +39,8 @@ app.post("/setClusters",function(req,res){
 	const pyProg = spawn('python', ['./tmscore/main.py', 'setClusters']);
 	pyProg.stdout.on('data', function(data) {
             console.log(data.toString());
-            res.status(200).json(data);
-            #res.send(data.toString()); 
+            //res.status(200).json(data);
+            res.send(data.toString()); 
         });
 });
 app.post("/getEachCluster",function(req,res){
