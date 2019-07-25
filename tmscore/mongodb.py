@@ -23,7 +23,7 @@ SEED_DATA = [
     }
 ]
 
-uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/heroku_9q71xw0m'
+uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/'
 
 def main(args):
     client = MongoClient(uri)
@@ -34,7 +34,7 @@ def main(args):
     # First we'll add a few songs. Nothing is required to create the songs 
     # collection; it is created automatically when we insert.
 
-    songs = db['heroku_9q71xw0m']
+    songs = db['tmssample']
 
     # Note that the insert method can take either an array or a single dict.
     songs.insert_many(SEED_DATA)
