@@ -1,6 +1,7 @@
 import sys
 import os
 import pymongo
+import json
 from pymongo import MongoClient
 SEED_DATA = [
     {
@@ -44,17 +45,17 @@ def main(args):
     #### update start ####
     # Then we need to give Boyz II Men credit for their contribution to
     # the hit "One Sweet Day".
-    query = {'song': 'One Sweet Day'}
-    songs.update_one(query, {'$set': {'decade': '2000s'}})
-    print("2000s")
+    #query = {'song': 'One Sweet Day'}
+    #songs.update_one(query, {'$set': {'decade': '2000s'}})
     #### update end ####
 
 
     #### obtain from db start ####
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
-    #cursor = songs.find({'weeksAtOne': {'$gte': 12}}).sort('decade', 1)
-    
+    cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
+    y = json.dumps(cursor)
+    print(y)
     #for doc in cursor:
         #print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
                #(doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
