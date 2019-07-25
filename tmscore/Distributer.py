@@ -2,13 +2,12 @@ import DataBase as db
 from sklearn.cluster import KMeans
 import json
 from pymongo import MongoClient
-
-uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/heroku_9q71xw0m'
+import datetime
 
 def clustering():
-    client = MongoClient(uri)
-    mongodb = client.get_default_database()
-    songs = mongodb['tmssample2']
+    mongodb = db.client.get_default_database()
+    mongodb.drop_collection('tmssample')
+    songs = mongodb['tmssample']
     
     kmeans = KMeans(n_clusters=db.num_cluster)
     kmeans.fit_predict(db.df)
@@ -22,10 +21,13 @@ def clustering():
         db.dict_Cluster[cluster_idx].append(db.dict_Parcel[id])
         i +=1
 
+    now = datetime.datetime.now()
+    todayDate = now.strftime('%Y-%m-%d')
+
     for v in db.dict_Cluster:
         cluster_num = str(v)
         for c in db.dict_Cluster[v]:
-            DATA = {'id': c.id, 'lat': c.lat, 'lon': c.lon, 'addr': c.addr}
+            DATA = {'id': c.id, 'date': todayDate,'lat': c.lat, 'lon': c.lon, 'addr': c.addr, 'clusterNum':cluster_num,'order':0,'state':0,'picName':''}
             songs.insert_one(DATA)
             #print(str(c.id) + ': ' + str(c.lat) + ', ' + str(c.lon) + ', ' + c.addr)
     print("success")
