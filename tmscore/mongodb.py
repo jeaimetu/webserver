@@ -23,7 +23,7 @@ SEED_DATA = [
     }
 ]
 
-uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/tmssample'
+uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/heroku_9q71xw0m'
 
 def main(args):
     client = MongoClient(uri)
