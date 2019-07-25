@@ -35,8 +35,13 @@ app.post("/getClusters",function(req,res){
 
 app.post("/setClusters",function(req,res){
 	console.log("setClusters is called");
-	var doc = { hello: "setClusters" };
-	res.status(200).json(doc);
+	const spawn = require("child_process").spawn;
+	const pyProg = spawn('python', ['./tmscore/main.py', 'setClusters']);
+	pyProg.stdout.on('data', function(data) {
+            console.log(data.toString());
+            res.status(200).json(data);
+            #res.send(data.toString()); 
+        });
 });
 app.post("/getEachCluster",function(req,res){
 	console.log("getEachCluster is called");
