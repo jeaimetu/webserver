@@ -46,6 +46,7 @@ def main(args):
     # the hit "One Sweet Day".
     query = {'song': 'One Sweet Day'}
     songs.update_one(query, {'$set': {'decade': '2000s'}})
+    print("2000s")
     #### update end ####
 
 
