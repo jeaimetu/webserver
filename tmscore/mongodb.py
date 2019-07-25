@@ -36,25 +36,31 @@ def main(args):
 
     songs = db['tmssample']
 
+    #### insert start ####
     # Note that the insert method can take either an array or a single dict.
     #songs.insert_many(SEED_DATA)
-
+    #### insert end ####
+    
+    #### update start ####
     # Then we need to give Boyz II Men credit for their contribution to
     # the hit "One Sweet Day".
-    query = {'song': 'One Sweet Day'}
-    songs.update_one(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
+    #query = {'song': 'One Sweet Day'}
+    #songs.update_one(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
+    #### update end ####
 
+
+    #### obtain from db start ####
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
+    cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
 
-    #cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
-
-    #for doc in cursor:
-        #print ('In the %s, %s by %s topped the charts for %d straight weeks.' %
-               #(doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
+    for doc in cursor:
+        print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
+               (doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
     
     ### Since this is an example, we'll clean up after ourselves.
-
+    #### obtain from db end ####
+    
     #db.drop_collection('songs')
 
     ### Only close the connection when your app is terminating
