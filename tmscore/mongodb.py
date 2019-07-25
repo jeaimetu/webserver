@@ -37,14 +37,12 @@ def main(args):
     songs = db['tmssample']
 
     # Note that the insert method can take either an array or a single dict.
-    songs.insert_many(SEED_DATA)
+    #songs.insert_many(SEED_DATA)
 
     # Then we need to give Boyz II Men credit for their contribution to
     # the hit "One Sweet Day".
-
-    #query = {'song': 'One Sweet Day'}
-
-    #songs.update(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
+    query = {'song': 'One Sweet Day'}
+    songs.update(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
 
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
