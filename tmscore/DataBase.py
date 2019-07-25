@@ -1,5 +1,5 @@
-
 import pandas as pd
+from json import JSONEncoder
 
 num_cluster = 0
 
@@ -9,6 +9,10 @@ dict_Cluster = {}
 
 df = pd.DataFrame(columns=('lon', 'lat'))
 tspFiles = []
+
+class ParcelEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
 
 class ParcelRaw:
     def __init__(self, id, addr):
