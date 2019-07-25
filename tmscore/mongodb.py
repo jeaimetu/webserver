@@ -44,19 +44,19 @@ def main(args):
     #### update start ####
     # Then we need to give Boyz II Men credit for their contribution to
     # the hit "One Sweet Day".
-    #query = {'song': 'One Sweet Day'}
-    #songs.update_one(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
+    query = {'song': 'One Sweet Day'}
+    songs.update_one(query, {'$set': {'decade': '2000s'}})
     #### update end ####
 
 
     #### obtain from db start ####
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
-    cursor = songs.find({'weeksAtOne': {'$gte': 12}}).sort('decade', 1)
-
-    for doc in cursor:
-        print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
-               (doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
+    #cursor = songs.find({'weeksAtOne': {'$gte': 12}}).sort('decade', 1)
+    
+    #for doc in cursor:
+        #print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
+               #(doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
     
     ### Since this is an example, we'll clean up after ourselves.
     #### obtain from db end ####
