@@ -56,8 +56,8 @@ def main(args):
     cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
     
     for doc in cursor:
-        y = json.dumps(doc)
-        print(y)
+        #y = json.dumps(doc)
+        print(doc)
         #print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
                #(doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
     
