@@ -42,7 +42,7 @@ def main(args):
     # Then we need to give Boyz II Men credit for their contribution to
     # the hit "One Sweet Day".
     query = {'song': 'One Sweet Day'}
-    songs.update(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
+    songs.update_one(query, {'$set': {'artist': 'Mariah Carey ft. Boyz II Men'}})
 
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
