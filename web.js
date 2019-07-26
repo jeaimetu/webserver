@@ -26,7 +26,7 @@ app.post("/getClusters",function(req,res){
 	const pyProg = spawn('python', ['./tmscore/mongodb.py']);
         pyProg.stdout.on('data', function(data) {
             console.log(data.toString());
-            res.end('end');
+            res.send(data.toString());
         });
 
 	//var doc = { hello: "getClusters" };
