@@ -75,6 +75,8 @@ class RouteFinder:
         for idx, row in cities.sort_values(by='winner').iterrows():
             query  = {"id":int(row['city'])}
             update = {'$set': {'order':order}}
+            print(query)
+            print(update)
             DBobj.update_one(query, update)
             order += 1
         # plot_route(cities, route, 'diagrams/route.png')
