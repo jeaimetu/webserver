@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import pandas as pd
+import DataBase as db
 from operator import itemgetter, attrgetter
 
 from som_tsp.io_helper import read_tsp, normalize
@@ -69,5 +70,12 @@ class RouteFinder:
         # plot_network(cities, network, name='diagrams/final.png')
 
         route = get_route(cities, network)
+        DBobj = db.getTMSDB('tmssample')
+        order=1
+        for idx, row in cities.sort_values(by='winner').iterrows():
+            query  = {"id":int(row['city'])}
+            update = {'$set': {'order':order}}
+            DBobj.update_one(query, update)
+            order += 1
         # plot_route(cities, route, 'diagrams/route.png')
         return route

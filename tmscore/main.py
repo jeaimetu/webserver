@@ -9,6 +9,8 @@ def main():
         adap.setClusters()
     elif sys.argv[1] == "getClusters":
         adap.getClusters()
+    elif sys.argv[1] == "setRoute":
+        adap.setRoute()
 
 if __name__ == "__main__":
     main()
