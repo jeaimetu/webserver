@@ -48,7 +48,6 @@ def loadData(fname):
 def storeTSPFile(fbase):
     for k, items in db.dict_Cluster.items():
         fname = fbase + '_' + str(k) + '.tsp'
-
         f = open(fname, 'w', encoding='utf-8')
         # dummy information
         f.write('NAME : TMS test data_' + str(k) + '\n')

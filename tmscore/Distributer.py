@@ -35,4 +35,3 @@ def clustering():
                     'state':0,
                     'picName':''}
             DBObj.insert_one(DATA)
-    print("success")

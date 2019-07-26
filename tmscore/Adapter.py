@@ -13,6 +13,7 @@ def setClusters(data=None):
 
     Distributer.clustering()
     setRoute()
+    print('success setClusters')
     return db.num_cluster
 
 def setRoute(data=None):
@@ -20,7 +21,6 @@ def setRoute(data=None):
     finder = RouteFinder()
     for fname in DataController.getTSPFilenames():
         finder.route(fname)
-    print('success setRoute')
 
 def getClusters(date=None):
     #print(date)

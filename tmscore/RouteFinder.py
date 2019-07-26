@@ -18,7 +18,7 @@ class RouteFinder:
         route = self.som(problem, 100000)
         problem = problem.reindex(route)
         distance = route_distance(problem)
-        print('Route found of length {}'.format(distance))
+        #print('Route found of length {}'.format(distance))
         pass
 
 
@@ -35,11 +35,12 @@ class RouteFinder:
 
         # Generate an adequate network of neurons:
         network = generate_network(n)
-        print('Network of {} neurons created. Starting the iterations:'.format(n))
+        #print('Network of {} neurons created. Starting the iterations:'.format(n))
 
         for i in range(iterations):
             if not i % 100:
-                print('\t> Iteration {}/{}'.format(i, iterations), end="\r")
+                #print('\t> Iteration {}/{}'.format(i, iterations), end="\r")
+                pass
             # ChooRoutese a random city
             city = cities.sample(1)[['x', 'y']].values
             winner_idx = select_closest(network, city)
@@ -57,15 +58,14 @@ class RouteFinder:
 
             # Check if any parameter has completely decayed.
             if n < 1:
-                print('Radius has completely decayed, finishing execution',
-                'at {} iterations'.format(i))
+                #print('Radius has completely decayed, finishing execution','at {} iterations'.format(i))
                 break
             if learning_rate < 0.001:
-                print('Learning rate has completely decayed, finishing execution',
-                'at {} iterations'.format(i))
+                #print('Learning rate has completely decayed, finishing execution','at {} iterations'.format(i))
                 break
         else:
-            print('Completed {} iterations.'.format(iterations))
+            pass
+            #print('Completed {} iterations.'.format(iterations))
 
         # plot_network(cities, network, name='diagrams/final.png')
 
@@ -75,8 +75,6 @@ class RouteFinder:
         for idx, row in cities.sort_values(by='winner').iterrows():
             query  = {"id":int(row['city'])}
             update = {'$set': {'order':order}}
-            print(query)
-            print(update)
             DBobj.update_one(query, update)
             order += 1
         # plot_route(cities, route, 'diagrams/route.png')
