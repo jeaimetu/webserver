@@ -12,6 +12,7 @@ def setClusters(data=None):
         DataController.loadData(data)
 
     Distributer.clustering()
+    setRoute()
     return db.num_cluster
 
 def setRoute(data=None):
