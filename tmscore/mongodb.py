@@ -54,7 +54,7 @@ def main(args):
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
     #cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
-    cursor = songs.distinct('clusterNum')
+    cursor = songs.distinct('clusterNum', {'date': '2019-07-26'})
     print(cursor)
     
     #for doc in cursor:
