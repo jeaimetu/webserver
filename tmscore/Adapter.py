@@ -26,10 +26,11 @@ def getClusters(date=None):
     print(date)
     DBobj = db.getTMSDB('tmssample')
     cursor = DBobj.distinct('clusterNum', {'date': date})
-    print(cursor)
+    
     #for doc in cursor:
         #print(doc)
-    #jsonStr = json.dumps(db.ParcelEncoder().encode(db.dict_Cluster))
+    jsonStr = json.dumps(db.ParcelEncoder().encode(cursor))
+    print(jsonStr)
     #return jsonstr
 
 
