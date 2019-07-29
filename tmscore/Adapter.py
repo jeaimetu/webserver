@@ -29,7 +29,7 @@ def getClusters(date=None):
     
     #for doc in cursor:
         #print(doc)
-    jsonStr = json.dumps(db.ParcelEncoder().encode(cursor))
+    jsonStr = json.dumps(cursor)
     print(jsonStr)
     #return jsonstr
 
