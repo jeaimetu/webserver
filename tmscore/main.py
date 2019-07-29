@@ -8,7 +8,8 @@ def main():
     if sys.argv[1] == "setClusters":
         adap.setClusters()
     elif sys.argv[1] == "getClusters":
-        adap.getClusters()
+        req_date = sys.argv[2]
+        adap.getClusters(req_date)
     # elif sys.argv[1] == "setRoute":
     #    adap.setRoute()
 
