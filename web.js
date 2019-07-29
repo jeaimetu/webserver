@@ -20,15 +20,16 @@ var url = process.env.MONGODB_URI;
 
 app.post("/getClusters",function(req,res){
 	console.log("getClusters is called");
+	console.log(req.query.date);
 	
 	const spawn = require("child_process").spawn; 
-        
+        /*
 	const pyProg = spawn('python', ['./tmscore/mongodb.py']);
         pyProg.stdout.on('data', function(data) {
             console.log(data.toString());
             res.send(data.toString());
         });
-
+        */
 	//var doc = { hello: "getClusters" };
 	//res.status(200).json(doc);
 });
