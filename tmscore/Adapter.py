@@ -23,7 +23,12 @@ def setRoute(data=None):
         finder.route(fname)
 
 def getClusters(date=None):
-    #print(date)
+    print(date)
+    DBobj = db.getTMSDB('tmssample')
+    cursor = DBobj.distinct('clusterNum', {'date': date})
+    print(cursor)
+    #for doc in cursor:
+        #print(doc)
     jsonStr = json.dumps(db.ParcelEncoder().encode(db.dict_Cluster))
     return jsonstr
 
