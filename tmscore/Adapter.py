@@ -25,7 +25,7 @@ def setRoute(data=None):
 def getClusters(date=None):
     print(date)
     DBobj = db.getTMSDB('tmssample')
-    cursor = DBobj.distinct('clusterNum')
+    cursor = DBobj.distinct('clusterNum', {'date': date})
     print(cursor)
     #for doc in cursor:
         #print(doc)
