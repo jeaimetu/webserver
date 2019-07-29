@@ -29,8 +29,8 @@ def getClusters(date=None):
     print(cursor)
     #for doc in cursor:
         #print(doc)
-    jsonStr = json.dumps(db.ParcelEncoder().encode(db.dict_Cluster))
-    return jsonstr
+    #jsonStr = json.dumps(db.ParcelEncoder().encode(db.dict_Cluster))
+    #return jsonstr
 
 
 def getEachCluster(clusterID, date=None):
