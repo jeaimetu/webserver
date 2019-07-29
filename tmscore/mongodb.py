@@ -35,11 +35,11 @@ def main(args):
     # First we'll add a few songs. Nothing is required to create the songs 
     # collection; it is created automatically when we insert.
 
-    songs = db['tmssample']
+    songs = db['tmsdb2']
 
     #### insert start ####
     # Note that the insert method can take either an array or a single dict.
-    #songs.insert_many(SEED_DATA)
+    songs.insert_many(SEED_DATA)
     #### insert end ####
     
     #### update start ####
@@ -53,11 +53,11 @@ def main(args):
     #### obtain from db start ####
     # Finally we run a query which returns all the hits that spent 10 or
     # more weeks at number 1.
-    cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
+    #cursor = songs.find({'weeksAtOne': {'$gte': 10}}).sort('decade', 1)
     
-    for doc in cursor:
+    #for doc in cursor:
         #y = json.dumps(doc)
-        print(doc)
+        #print(doc)
         #print ('In the %s, %s by %s topped the charts for %d straight weeks.' % 
                #(doc['decade'], doc['song'], doc['artist'], doc['weeksAtOne']))
     
