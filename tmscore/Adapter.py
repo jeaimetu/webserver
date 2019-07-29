@@ -23,7 +23,6 @@ def setRoute(data=None):
         finder.route(fname)
 
 def getClusters(date=None):
-    print(date)
     DBobj = db.getTMSDB('tmssample')
     cursor = DBobj.distinct('clusterNum', {'date': date})
     
