@@ -25,7 +25,10 @@ SECRET_KEY = 'z5(jsngbk+r7s8s_(qa9=+lj4o=)gv69a=3^e3#+--yh3rd))j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    'tmsproto-py.herokuapp.com',
+]
 
 
 # Application definition
