@@ -1,36 +1,39 @@
 #!/usr/bin/env python3
-import DataBase as db
-import DataController
-import Distributer
-from RouteFinder import RouteFinder
+import tmscore.DataBase as db
+import tmscore.DataController as dcon
+import tmscore.Distributer as distributer
+from tmscore.RouteFinder import RouteFinder
 import json
 
-def setClusters(data=None):
-    if data is None:
-        DataController.loadDataFromCache()
-    else:
-        DataController.loadData(data)
+from django.shortcuts import render
+from django.http import HttpResponse
 
-    Distributer.clustering()
+def setClusters(req, data=None):
+    if data is None:
+        dcon.loadDataFromCache()
+    else:
+        dcon.loadData(data)
+
+    distributer.clustering()
     setRoute()
     print('success setClusters')
-    return db.num_cluster
+    return HttpResponse('<pre>' + str(db.num_cluster) + '</pre>')
 
 def setRoute(data=None):
-    DataController.storeTSPFile('data')
+    dcon.storeTSPFile('data')
     finder = RouteFinder()
-    for fname in DataController.getTSPFilenames():
+    for fname in dcon.getTSPFilenames():
         finder.route(fname)
 
-def getClusters(date=None):
+def getClusters(req, date=None):
     DBobj = db.getTMSDB('tmssample')
     cursor = DBobj.distinct('clusterNum') # , {'date': date})
     
-    #for doc in cursor:
-        #print(doc)
+    # for doc in cursor:
+        # print(doc)
     jsonStr = json.dumps(cursor)
     print(jsonStr)
-    #return jsonstr
+    return HttpResponse('<pre>' + jsonStr + '</pre>')
 
 
 def getEachCluster(clusterID, date=None):

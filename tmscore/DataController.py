@@ -1,4 +1,4 @@
-import DataBase as db
+import tmscore.DataBase as db
 import requests
 from urllib import parse
 from haversine import haversine
@@ -9,7 +9,7 @@ API_KEY="a9a4f76e68df45d99954e267b0337b44"
 headers = {'Authorization': 'KakaoAK {}'.format(API_KEY)}
 
 def loadDataFromCache():
-    f = open('/app/tmscore/cache.txt', 'r', encoding='utf-8')
+    f = open('tmscore/cache.txt', 'r', encoding='utf-8')
     db.num_cluster = int(f.readline().rstrip())
     lines = f.readlines()
     f.close()

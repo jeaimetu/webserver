@@ -1,3 +1,4 @@
 pipinstall: pip install -r requirements.txt
 pipupgrade: pip install --upgrade pip
-web: node web.js
+web: gunicorn tms_was.wsgi
+worker: python worker.py

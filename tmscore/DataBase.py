@@ -1,5 +1,4 @@
 import pandas as pd
-import DataBase as db
 from json import JSONEncoder
 from pymongo import MongoClient
 

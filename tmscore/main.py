@@ -1,8 +1,8 @@
-import DataController
-import Distributer
-from RouteFinder import RouteFinder
+import tmscore.DataController
+import tmscore.Distributer
+from tmscore.RouteFinder import RouteFinder
 import sys
-import Adapter as adap
+import tmscore.Adapter as adap
 
 def main():
     if sys.argv[1] == "setClusters":

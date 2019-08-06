@@ -1,6 +1,6 @@
 import numpy as np
 
-from som_tsp.distance import select_closest
+from tmscore.som_tsp.distance import select_closest
 
 def generate_network(size):
     """
