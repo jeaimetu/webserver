@@ -2,7 +2,7 @@ import pandas as pd
 from json import JSONEncoder
 from pymongo import MongoClient
 
-uri = 'mongodb://heroku_9q71xw0m:ipioujieemc6m1ejb7gac2g2ol@ds255107.mlab.com:55107/heroku_9q71xw0m'
+uri = 'mongodb://heroku_h3zn98bh:pcmg8thaanrfo1aqufavp8a3fa@ds359847.mlab.com:59847/heroku_h3zn98bh'
 client = MongoClient(uri)
 mongodb = client.get_default_database()
 

@@ -8,7 +8,16 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def setClusters(req, data=None):
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
+
+def setClusters(req):
+    result = q.enqueue(setClustersWork, job_timeout=600)
+    return HttpResponse('<pre>' + 'setClusters() Processing...' + '</pre>')
+
+def setClustersWork(data=None):
     if data is None:
         dcon.loadDataFromCache()
     else:
@@ -17,7 +26,6 @@ def setClusters(req, data=None):
     distributer.clustering()
     setRoute()
     print('success setClusters')
-    return HttpResponse('<pre>' + str(db.num_cluster) + '</pre>')
 
 def setRoute(data=None):
     dcon.storeTSPFile('data')
@@ -28,7 +36,7 @@ def setRoute(data=None):
 def getClusters(req, date=None):
     DBobj = db.getTMSDB('tmssample')
     cursor = DBobj.distinct('clusterNum') # , {'date': date})
-    
+
     # for doc in cursor:
         # print(doc)
     jsonStr = json.dumps(cursor)
