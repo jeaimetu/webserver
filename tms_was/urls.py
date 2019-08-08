@@ -19,7 +19,10 @@ from django.urls import path
 import tmscore.Adapter as adap
 
 urlpatterns = [
-    path('set/', adap.setClusters, name='setClusters'),
-    path('clusters/', adap.getClusters, name='getClusters'),
+    path('', adap.index, name='firebase_test'),
+    # path('set/', adap.setClusters, name='setClusters'),
+    path('set/<int:year>/<int:month>/<int:day>/', adap.setClusters, name='setClusters'),
+    # path('clusters/', adap.getClusters, name='getClusters'),
+    path('clusters/<int:year>/<int:month>/<int:day>/', adap.getClusters, name='getClusters'),
     path('admin/', admin.site.urls),
 ]

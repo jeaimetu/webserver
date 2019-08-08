@@ -13,32 +13,48 @@ from worker import conn
 
 q = Queue(connection=conn)
 
-def setClusters(req):
-    result = q.enqueue(setClustersWork, job_timeout=600)
+
+def index(req):
+    dcon.loadDataFromFirebaseDB('2019-07-10')
+    return HttpResponse('<pre>' + 'Does Firebase activated???' + '</pre>')
+
+
+def setClusters(req, year, month, day):
+    if year == None or month == None or day == None:
+        return HttpResponse('<pre>' + 'Invalid URL' + '</pre>')
+
+    result = q.enqueue(setClustersWork, args=(
+        year, month, day), job_timeout=600)
     return HttpResponse('<pre>' + 'setClusters() Processing...' + '</pre>')
 
-def setClustersWork(data=None):
-    if data is None:
-        dcon.loadDataFromCache()
-    else:
-        dcon.loadData(data)
+
+def setClustersWork(year, month, day, data=None):
+    dateForm = '-'.join([str(year), str("%02d" % month), str("%02d" % day)])
+    print(dateForm)
+    dcon.loadDataFromFirebaseDB(dateForm)
+    # if data is None:
+    #     dcon.loadDataFromCache()
+    # else:
+    #     dcon.loadData(data)
 
     distributer.clustering()
     setRoute()
     print('success setClusters')
 
+
 def setRoute(data=None):
-    dcon.storeTSPFile('data')
+    dcon.saveTSPFile('data')
     finder = RouteFinder()
     for fname in dcon.getTSPFilenames():
         finder.route(fname)
 
+
 def getClusters(req, date=None):
     DBobj = db.getTMSDB('tmssample')
-    cursor = DBobj.distinct('clusterNum') # , {'date': date})
+    cursor = DBobj.distinct('clusterNum')  # , {'date': date})
 
     # for doc in cursor:
-        # print(doc)
+    # print(doc)
     jsonStr = json.dumps(cursor)
     print(jsonStr)
     return HttpResponse('<pre>' + jsonStr + '</pre>')
@@ -54,11 +70,13 @@ def getEachCluster(clusterID, date=None):
     # {ParcelID, address, lat, lon, deliveryState}
     pass
 
+
 def getParcelState(parcelID):
     # - res:
     # deliveryState
     # PictureFile
     pass
+
 
 def setParcelState(parcelID, pictureFile, updateState):
     # - res:
