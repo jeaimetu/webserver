@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import pandas as pd
-import tmscore.DataBase as db
+# import tmscore.DataBase as db
 from operator import itemgetter, attrgetter
 
 from tmscore.som_tsp.io_helper import read_tsp, normalize
@@ -9,24 +9,28 @@ from tmscore.som_tsp.neuron import generate_network, get_neighborhood, get_route
 from tmscore.som_tsp.distance import select_closest, euclidean_distance, route_distance
 #from som_tsp.plot import plot_network, plot_route
 
+
 class RouteFinder:
+    problem = None
+    route = None
+    distance = None
+
     def __init__(self):
         pass
-        
+
     def route(self, tspFile):
-        problem = read_tsp(tspFile)
-        route = self.som(problem, 100000)
-        problem = problem.reindex(route)
-        distance = route_distance(problem)
+        self.problem = read_tsp(tspFile)
+        self.route = self.som(self.problem, 100000)
+        self.problem = self.problem.reindex(self.route)
+        self.distance = route_distance(self.problem)
         #print('Route found of length {}'.format(distance))
         pass
-
 
     def som(self, problem, iterations, learning_rate=0.8):
         """Solve the TSP using a Self-Organizing Map."""
 
         # Obtain the normalized set of cities (w/ coord in [0,1])
-        cities = problem.copy()
+        cities = self.problem.copy()
 
         cities[['x', 'y']] = normalize(cities[['x', 'y']])
 
@@ -47,7 +51,8 @@ class RouteFinder:
             # Generate a filter that applies changes to the winner's gaussian
             gaussian = get_neighborhood(winner_idx, n//10, network.shape[0])
             # Update the network's weights (closer to the city)
-            network += gaussian[:,np.newaxis] * learning_rate * (city - network)
+            network += gaussian[:, np.newaxis] * \
+                learning_rate * (city - network)
             # Decay the variables
             learning_rate = learning_rate * 0.99997
             n = n * 0.9997
@@ -69,13 +74,13 @@ class RouteFinder:
 
         # plot_network(cities, network, name='diagrams/final.png')
 
-        route = get_route(cities, network)
-        DBobj = db.getTMSDB('tmssample')
-        order=1
-        for idx, row in cities.sort_values(by='winner').iterrows():
-            query  = {"id":int(row['city'])}
-            update = {'$set': {'order':order}}
-            DBobj.update_one(query, update)
-            order += 1
+        self.route = get_route(cities, network)
+        # DBobj = db.getTMSDB('tmssample')
+        # order = 1
+        # for idx, row in cities.sort_values(by='winner').iterrows():
+        #     query = {"id": int(row['city'])}
+        #     update = {'$set': {'order': order}}
+        #     DBobj.update_one(query, update)
+        #     order += 1
         # plot_route(cities, route, 'diagrams/route.png')
-        return route
+        return self.route

@@ -1,9 +1,22 @@
-import pandas as pd
 from json import JSONEncoder
-from pymongo import MongoClient
 
-uri = 'mongodb://heroku_h3zn98bh:pcmg8thaanrfo1aqufavp8a3fa@ds359847.mlab.com:59847/heroku_h3zn98bh'
-client = MongoClient(uri)
+import pandas as pd
+from pymongo import MongoClient
+import pyrebase
+
+config = {
+    "apiKey": "AIzaSyBQnvKaeLDHrQY21TorMTt3F9D-1zejLUI",
+    "authDomain": "simpletms-dcc49.firebaseapp.com",
+    "databaseURL": "https://simpletms-dcc49.firebaseio.com",
+    "storageBucket": "simpletms-dcc49.appspot.com",
+    # "serviceAccount": "firebase/simpletms-dcc49-firebase-adminsdk-1qjxk-b085b1a7a9.json"
+}
+
+firebase = pyrebase.initialize_app(config)
+firebaseDB = firebase.database()
+
+mongoDBuri = 'mongodb://heroku_h3zn98bh:pcmg8thaanrfo1aqufavp8a3fa@ds359847.mlab.com:59847/heroku_h3zn98bh'
+client = MongoClient(mongoDBuri)
 mongodb = client.get_default_database()
 
 num_cluster = 0

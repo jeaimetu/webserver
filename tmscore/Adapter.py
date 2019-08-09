@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-import tmscore.DataBase as db
-import tmscore.DataController as dcon
-import tmscore.Distributer as distributer
-from tmscore.RouteFinder import RouteFinder
 import json
 
 from django.shortcuts import render
 from django.http import HttpResponse
-
 from rq import Queue
 from worker import conn
+
+import tmscore.DataBase as db
+import tmscore.DataController as dcon
+import tmscore.Distributer as distributer
+from tmscore.RouteFinder import RouteFinder
 
 q = Queue(connection=conn)
 
@@ -38,15 +38,13 @@ def setClustersWork(year, month, day, data=None):
     #     dcon.loadData(data)
 
     distributer.clustering()
-    setRoute()
-    print('success setClusters')
-
-
-def setRoute(data=None):
     dcon.saveTSPFile('data')
     finder = RouteFinder()
-    for fname in dcon.getTSPFilenames():
+    for c, fname in enumerate(dcon.getTSPFilenames()):
         finder.route(fname)
+        dcon.saveDataToFirebaseDB(dateForm, c, finder.problem, finder.route)
+        print('firebaseDB updated for cluster', c)
+    print('success setClusters')
 
 
 def getClusters(req, date=None):

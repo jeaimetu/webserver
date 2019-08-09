@@ -1,20 +1,10 @@
-import tmscore.DataBase as db
+import math
 import requests
+
 from urllib import parse
 from haversine import haversine
-import math
 
-import pyrebase
-
-config = {
-    "apiKey": "AIzaSyBQnvKaeLDHrQY21TorMTt3F9D-1zejLUI",
-    "authDomain": "simpletms-dcc49.firebaseapp.com",
-    "databaseURL": "https://simpletms-dcc49.firebaseio.com",
-    "storageBucket": "simpletms-dcc49.appspot.com",
-    # "serviceAccount": "firebase/simpletms-dcc49-firebase-adminsdk-1qjxk-b085b1a7a9.json"
-}
-
-firebase = pyrebase.initialize_app(config)
+import tmscore.DataBase as db
 
 
 API_HOST = "https://dapi.kakao.com"
@@ -23,10 +13,11 @@ headers = {'Authorization': 'KakaoAK {}'.format(API_KEY)}
 
 
 def loadDataFromFirebaseDB(dateForm):
-    firebaseDB = firebase.database()
-    parcels = firebaseDB.child("parcel_list").child(dateForm).get()
+    parcels = db.firebaseDB.child("parcel_list").child(dateForm).get()
     parcelsArr = parcels.val()
-    counter = 0
+
+    # 60 parcels per a person
+    db.num_cluster = math.ceil(len(parcelsArr) / 60)
     for parcel in parcelsArr:
         if parcel is None:
             continue
@@ -40,10 +31,6 @@ def loadDataFromFirebaseDB(dateForm):
         params = getParamsFromParcelRaw(item)
         db.dict_Parcel[id] = db.Parcel(id, addr, lat, lon)
         db.df.loc[id] = [lat, lon]
-        counter += 1
-
-    # 60 parcels per a person
-    db.num_cluster = int(math.ceil(counter / 60))
 
 
 def loadDataFromCache():
@@ -85,10 +72,11 @@ def loadData(fname):
             db.df.loc[item.id] = [lat, lon]
 
 
-def saveDataToFirebaseDB(dateForm):
-    firebaseDB = firebase.database()
-    parcels = firebaseDB.child("parcel_list").child(dateForm).get()
-    pass
+def saveDataToFirebaseDB(dateForm, cluster, problem, route):
+    for i, v in enumerate(route):
+        city = problem.iloc[v][0]
+        db.firebaseDB.child("parcel_list").child(dateForm).child(
+            city).update({"sectorId": cluster, "orderInRoute": i})
 
 
 def saveTSPFile(fbase):
