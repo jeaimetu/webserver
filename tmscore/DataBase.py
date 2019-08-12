@@ -9,7 +9,7 @@ config = {
     "authDomain": "simpletms-dcc49.firebaseapp.com",
     "databaseURL": "https://simpletms-dcc49.firebaseio.com",
     "storageBucket": "simpletms-dcc49.appspot.com",
-    # "serviceAccount": "firebase/simpletms-dcc49-firebase-adminsdk-1qjxk-b085b1a7a9.json"
+    # "serviceAccount": "DBAuth/simpletms-dcc49-firebase-adminsdk-1qjxk-b085b1a7a9.json"
 }
 
 firebase = pyrebase.initialize_app(config)

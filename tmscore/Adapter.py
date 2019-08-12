@@ -51,8 +51,6 @@ def getClusters(req, date=None):
     DBobj = db.getTMSDB('tmssample')
     cursor = DBobj.distinct('clusterNum')  # , {'date': date})
 
-    # for doc in cursor:
-    # print(doc)
     jsonStr = json.dumps(cursor)
     print(jsonStr)
     return HttpResponse('<pre>' + jsonStr + '</pre>')
