@@ -7,13 +7,21 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <meta-data
+        android:name="com.kakao.sdk.AppKey"
+        android:value="8be996dd99057764a9876591b3270e31" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".MapViewActivity"
+            android:label="@string/title_activity_map_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ClusterAndRouteActivity"
             android:configChanges="orientation"
@@ -24,7 +32,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,6 +51,7 @@
             android:name=".ParcelListActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>
 
 </manifest>

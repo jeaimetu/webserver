@@ -80,7 +80,6 @@ public class FirebaseDatabaseConnector {
         }
     }
 
-    
     protected void postParcelListToFirebaseDatabase(String pathString, ArrayList<TmsParcelItem> list) {
         for (TmsParcelItem item : list) {
             postParcelItemToFirebaseDatabase(pathString, item);
@@ -178,7 +177,12 @@ public class FirebaseDatabaseConnector {
 
                     Log.d(LOG_TAG, "mArrayValues size = " + mArrayValues.size());
                 }
-                mListAdapter.notifyDataSetChanged();
+                if (mListAdapter != null) {
+                    mListAdapter.notifyDataSetChanged();
+                }
+                if (mContext instanceof MapViewActivity) {
+                    MapViewActivity.addMarker();
+                }
             }
 
             @Override

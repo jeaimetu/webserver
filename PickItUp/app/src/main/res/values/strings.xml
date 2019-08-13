@@ -83,4 +83,6 @@
     <string name="need_manual_input">위치정보를 얻지 못했습니다. 주소를 직접 입력해주세요.</string>
     <string name="complete_message_title">배송메세지 보내기</string>
     <string name="cluster_route_str">물류분배 및 최적경로</string>
+    <string name="title_activity_map_view">MapViewActivity</string>
+    <string name="back_to_list">리스트 화면으로 돌아가기</string>
 </resources>

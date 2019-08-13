@@ -328,7 +328,10 @@ public class ParcelListActivity extends AppCompatActivity implements View.OnClic
                 break;
 
             case R.id.btn_change_view:
-                //TODO, need to implements MapViewActivity
+                Intent intent = new Intent(ParcelListActivity.this, MapViewActivity.class);
+                intent.putExtra(Utils.KEY_DB_DATE, mTextCourierDate.getText().toString());
+                intent.putExtra(Utils.KEY_COURIER_NAME, mTextCourierName.getText().toString());
+                startActivity(intent);
                 break;
 
             case R.id.text_courier_date:
