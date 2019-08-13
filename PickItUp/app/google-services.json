@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1098163241677",
+    "firebase_url": "https://smart-router-17060.firebaseio.com",
+    "project_id": "smart-router-17060",
+    "storage_bucket": "smart-router-17060.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098163241677:android:7aaf7dccde690258",
+        "android_client_info": {
+          "package_name": "com.lge.pickitup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098163241677-jr59okbfa8n3aj4simh6blmaldfnkouc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lge.pickitup",
+            "certificate_hash": "c2aa9fb3de40b7dea53d198b7f87050de3987762"
+          }
+        },
+        {
+          "client_id": "1098163241677-qhquj07k78afe3hnttpfst3f4attdcdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZX5ijF7uzdaZKVqC_BIYIRz0gsVPmjqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098163241677-qhquj07k78afe3hnttpfst3f4attdcdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

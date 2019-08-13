@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/title_layer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="#EFEFEF">
+
+        <ImageView
+            android:id="@+id/conn_image"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@mipmap/activity_connect_account_settings_disconnected" />
+
+        <TextView
+            android:id="@+id/conn_account_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="User account"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:layout_toRightOf="@id/conn_image"
+            android:layout_centerVertical="true"
+            android:background="@drawable/connected_account_border"/>
+
+
+
+        <TextView
+            android:id="@+id/sign_out_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignRight="@id/conn_account_name"
+            android:text="@string/sign_out_text"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/active_border2"/>
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/goto_parcel_list_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/title_layer"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="100dp"
+        app:srcCompat="@drawable/delivery_truck"
+/>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@id/goto_parcel_list_btn"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/file_list_desc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill_horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/divider1"
+        android:text="추가할 item을 가진 파일을 아래 목록에서 선택해주세요.\n파일을 선택하시면 데이터베이스에 업로드됩니다."
+        android:background="#03A9F4"
+        android:textSize="16dp"
+        android:textColor="#FFFFFF"/>
+
+    <ListView
+        android:id="@+id/file_listView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/file_list_desc"
+        android:layout_marginTop="5dp"/>
+
+
+</RelativeLayout>

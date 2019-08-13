@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/title_layer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="#EFEFEF">
+
+        <ImageView
+            android:id="@+id/conn_image"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@mipmap/activity_connect_account_settings_disconnected" />
+
+        <TextView
+            android:id="@+id/conn_account_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="User account"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:layout_toRightOf="@id/conn_image"
+            android:layout_centerVertical="true"
+            android:background="@drawable/connected_account_border"/>
+
+
+        <TextView
+            android:id="@+id/sign_out_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignRight="@id/conn_account_name"
+            android:text="@string/sign_out_text"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/active_border2"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/first_row_layer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_layer"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/upload_menu"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/upload_icon" />
+
+        <ImageView
+            android:id="@+id/parcel_list_menu"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/upload_menu"
+            android:layout_marginLeft="30dp"
+            app:srcCompat="@drawable/shipping_and_location" />
+
+        <TextView
+            android:id="@+id/upload_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/upload_menu"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/upload_menu"
+            android:layout_alignEnd="@id/upload_menu"
+            android:gravity="center_horizontal"
+            android:text="@string/upload_item_from_file"/>
+
+        <TextView
+            android:id="@+id/parcel_list_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/parcel_list_menu"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/parcel_list_menu"
+            android:layout_alignEnd="@id/parcel_list_menu"
+            android:gravity="center"
+            android:text="@string/view_itme_in_listview"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/second_row_layer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/first_row_layer"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/courier_menu"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/courier_icon" />
+
+        <ImageView
+            android:id="@+id/mapview_menu"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/courier_menu"
+            android:layout_marginLeft="30dp"
+            app:srcCompat="@drawable/location_map_flat" />
+
+        <TextView
+            android:id="@+id/courier_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/courier_menu"
+            android:text="@string/view_parcel_item_per_courier"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/courier_menu"
+            android:layout_alignEnd="@id/courier_menu"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/mapview_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mapview_menu"
+            android:text="@string/view_location_in_mapview"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/mapview_menu"
+            android:layout_alignEnd="@id/mapview_menu"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/third_row_layer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/second_row_layer"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/send_msg_and_upload_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/message_bubble_icon" />
+
+        <ImageView
+            android:id="@+id/cluster_and_route"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/send_msg_and_upload_img"
+            android:layout_marginLeft="30dp"
+            app:srcCompat="@drawable/route_icon" />
+
+        <TextView
+            android:id="@+id/send_msg_and_upload_img_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/send_msg_and_upload_img"
+            android:text="@string/complete_message_title"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/send_msg_and_upload_img"
+            android:layout_alignEnd="@id/send_msg_and_upload_img"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/cluster_and_route_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cluster_and_route"
+            android:text="@string/cluster_route_str"
+            android:layout_marginTop="4dp"
+            android:layout_alignStart="@id/cluster_and_route"
+            android:layout_alignEnd="@id/cluster_and_route"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+
+
+    `
+
+</RelativeLayout>
