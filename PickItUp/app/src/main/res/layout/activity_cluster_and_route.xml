@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClusterAndRouteActivity">
+
+    <ImageView
+        android:id="@+id/date_icon2"
+        android:layout_width="20dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/courier_icn"
+        android:layout_alignLeft="@id/courier_icn"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courier_icn2"
+        app:srcCompat="@mipmap/activity_tracking_add_v2_tracking_ship_date" />
+
+    <TextView
+        android:id="@+id/text_courier_date2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/active_border"
+        android:clickable="true"
+        android:paddingLeft="14dp"
+        android:paddingTop="8dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="8dp"
+        android:text="@string/default_courier_date"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/text_date_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_courier_number" />
+
+    <TextView
+        android:id="@+id/text_date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+
+        android:padding="5dp"
+        android:text="@string/courier_date_title"
+        android:textColor="#37474F"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/date_icon2"
+        app:layout_constraintTop_toBottomOf="@+id/text_courier_title2" />
+
+    <ImageView
+        android:id="@+id/courier_icn2"
+        android:layout_width="20dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/title_layer"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/activity_tracking_add_v2_tracking_account_number" />
+
+    <TextView
+        android:id="@+id/text_courier_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/courier_icn"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_toRightOf="@id/courier_icn"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/courier_number_title"
+        android:textColor="#37474F"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/courier_icn2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/text_courier_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/active_border"
+        android:paddingLeft="14dp"
+        android:paddingTop="8dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="8dp"
+        android:text="@string/default_courier_number"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/text_courier_title2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_process_cluster_and_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="48dp"
+        android:text="Start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_courier_date2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

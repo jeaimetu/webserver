@@ -25,6 +25,7 @@ public class Utils {
 
     static final String KEY_DB_DATE = "date";
     static final String KEY_COURIER_NAME ="courier_name";
+    static final String KEY_COURIER_NUMBER ="courier_number";
 
     static Location mCurrent;
     static LocationManager mLocationMgr;

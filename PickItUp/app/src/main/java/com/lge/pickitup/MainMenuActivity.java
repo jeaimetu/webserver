@@ -31,6 +31,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     private ImageView mIvViewParcleListIcon;
     private ImageView mIvViewItemPerCourierIcon;
     private ImageView mIvViewInMapIcon;
+    private ImageView mIvViewClusterAndRouteIcon;
 
     private TextView mTvUploadMenuTitle;
     private TextView mTvViewParcelListTitle;
@@ -127,11 +128,13 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         mIvViewParcleListIcon = findViewById(R.id.parcel_list_menu);
         mIvViewItemPerCourierIcon = findViewById(R.id.courier_menu);
         mIvViewInMapIcon = findViewById(R.id.mapview_menu);
+        mIvViewClusterAndRouteIcon = findViewById(R.id.cluster_and_route);
 
         mIvUploadMenuIcon.setOnClickListener(this);
         mIvViewParcleListIcon.setOnClickListener(this);
         mIvViewItemPerCourierIcon.setOnClickListener(this);
         mIvViewInMapIcon.setOnClickListener(this);
+        mIvViewClusterAndRouteIcon.setOnClickListener(this);
     }
 
     @Override
@@ -172,6 +175,11 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.mapview_menu :
                 Log.d(LOG_TAG, "onClick to mapview menu");
+                break;
+
+            case R.id.cluster_and_route:
+                Log.d(LOG_TAG, "onClick to cluster_and_route menu");
+                startActivity(new Intent(this, ClusterAndRouteActivity.class));
                 break;
         }
     }
