@@ -18,6 +18,14 @@ var url = process.env.MONGODB_URI;
  });
  */
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app,get("/get_market_share",function(req,res){
+	res.send("3.47%")
+})
+
 app.post("/getClusters",function(req,res){
 	console.log("getClusters is called");
 	
